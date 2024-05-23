@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "dev.jwall64"
-version = "0.3.0-SNAPSHOT"
+version = "0.3.0"
 
 java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(8))
