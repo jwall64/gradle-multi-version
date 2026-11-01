@@ -4,10 +4,10 @@ plugins {
 }
 
 group = "dev.jwall64"
-version = "0.3.0"
+version = "0.4.0"
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
+    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
 
 gradlePlugin {
@@ -25,11 +25,19 @@ publishing {
 
     if (project.hasProperty("pubUrl")) {
 
-        val url: String = project.properties["pubUrl"] as String
+        var url: String = project.property("pubUrl") as String
+        var repo = project.property("pubRepo")
+
+        if(repo != null) {
+            if(!url.endsWith("/")) {
+                url += "/";
+            }
+            url += repo
+        }
+
         repositories.maven(url) {
             name = "pub"
             credentials(PasswordCredentials::class.java)
         }
     }
-
 }
