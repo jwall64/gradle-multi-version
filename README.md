@@ -15,7 +15,8 @@ by running `gradlew build` in its root. Then publish it to the local maven repos
 ```
 pluginManagement {
     repositories {
-}
+        mavenLocal()
+    }
 }
 ```
 Alternatively, you can reference it in your project directly by adding a reference to the cloned repository to your
@@ -29,7 +30,7 @@ pluginManagement {
 Then, add the plugin to your `build.gradle.kts`:
 ```
 plugins {
-    id("dev.jwall64.gradle-multi-version") version "0.2.0"
+    id("dev.jwall64.gradle-multi-version") version "0.4.0"
 }
 ```
 The final step to get everything set up is to add the additional JVM versions you would like to target to your
